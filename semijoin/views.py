@@ -11,7 +11,6 @@ def home(request):
             db = "ads4_3"
             # dictionary = store.typejoin()
         dictionary = store.joins(table,db)
-        print(dictionary)
         return render(request, 'semijoin/process.html', dictionary)
     info = store.get_info()
     return render(request,'semijoin/home.html',{'info':info})
