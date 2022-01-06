@@ -1,0 +1,81 @@
+{% extends "semijoin/base.html" %}{% block content%}{% load static %}
+<div class="row">
+    <div class="col-sm-4">
+        <h6 class="alert alert-success fs-6 text-center">Shifting ids from {{database}}.{{table}} to database ads4_1</h6>
+    </div>
+    <div class="col-sm-4">
+        <h6 class="alert alert-success fs-6 text-center">Joining data at ads4_1.products table and returning data to {{database}}</h6>
+    </div>
+    <div class="col-sm-4">
+        <h6 class="alert alert-success fs-6 text-center">Obtaining result at {{database}}</h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in ids %}
+                    <tr>
+                        <td scope="row">{{row}}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-1">
+        <img src="{%static 'semijoin/images/arrow.png'%}" class="img-fluid">
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    {% for col in data_cols %}
+                        <th scope="row">{{col}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        {% for i in row %}
+                            <td scope="row text-center">{{i}}</th>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-1">
+        <img src="{%static 'semijoin/images/arrow.png'%}" class="img-fluid">
+    </div>
+    <div class="col-sm-4">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    {% for col in results_cols %}
+                        <th scope="row">{{col}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        {% for i in row %}
+                            <td scope="row text-center">{{i}}</th>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <a class="btn btn-primary" href="" role="button">Home</a>
+</div>
+{% endblock content %}
